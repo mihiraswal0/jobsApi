@@ -7,12 +7,14 @@ const errorHandler=require('./middleware/errorHandler.js');
 const notFound=require('./middleware/notFound.js');
 const tasks=require('./routes/tasks.js');
 const port=process.env.PORT ||5000;
-
+const authRouter=require('./routes/auth.js');
+const jobsRouter=require('./routes/jobs.js');
 
 app.use(bodyParser.json());
 
 
-app.use('/api/v1/products',tasks);
+app.use('/api/v1/auth',authRouter);
+app.use('/api/v1/jobs',jobsRouter);
 
 app.use(errorHandler);
 app.use(notFound);
